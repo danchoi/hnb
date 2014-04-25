@@ -1,0 +1,34 @@
+
+
+he solution which I believe selects "/root/a[2]/b" (all "b" tags inside second "a" tag):
+
+selector :: ArrowXml a => Int -> a XmlTree String
+selector nth =
+    (getChildren /> isElem >>> hasName "a")   -- the parentheses required!
+    >. (!! nth) 
+    /> isElem >>> hasName "b" /> getText
+(result is ["third element"]).
+
+Explanation: As I see, class (..., ArrowList a, ...) => ArrowXml a, so ArrowXml a is a subclass for ArrowList. Looking through ArrowList interface:
+
+(>>.) :: a b c -> ([c] -> [d]) -> a b d
+(>.) :: a b c -> ([c] -> d) -> a b d
+so >>. can select a subset of a list using some lifted [c] -> [d] and >. can select a single item from a list using a lifted function of type [c] -> d. So, after children are selected and tags "a" filtered, let's use (!! nth) :: [a] -> a.
+
+There's an important thing to note:
+
+infix 1 >>>
+infix 5 />
+infix 8 >.
+(so I've had a hard time trying to figure out why >. without parentheses does not work as expected). Thus, getChildren /> isElem >>> hasName "a" must be wrapped in parentheses.
+
+
+
+getSections = addNav >>> 
+                listA (getChildren >>> withoutNav (isElem >>> hasName "span")) >>> 
+                arr tail >>> unlistA >>> 
+                ((getChildren >>> remNav >>> getText) &&& 
+                (listA followingSiblingAxis >>> arr head >>> remNav >>> getText >>> arr (rc . trim)))
+
+
+
