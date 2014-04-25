@@ -1,0 +1,304 @@
+      [IMG]    Hacker Newsnew | comments | ask | jobs | submit    login
+       Feds Beg Supreme Court to Let Them Search Phones Without a Warrant
+       (wired.com)
+       116 points by hashx 10 hours ago | 28 comments
+       _____________________________________________________________
+       _____________________________________________________________
+       _____________________________________________________________
+       _____________________________________________________________
+       _____________________________________________________________
+       _____________________________________________________________
+
+       [ add comment ]
+
+        tptacek 9 hours ago | link
+        They want the authority to search phones incident to arrest.
+        Before you form an opinion about this --- I'm not sure what mine
+        is --- you should know that the police have always had broad
+        authority to conduct warrantless, intrusive searches at the time
+        of an actual arrest. That's one of the things that makes arrest
+        very different from mere detention.
+
+        If you're arrested by the police, they will not generally need to
+        obtain a warrant to search your person, your pockets, your bag, or
+        the passenger compartment of your car. Thoroughly.
+
+        People confuse "search incident to arrest" with "Terry stops",
+        which are light, supposedly unintrusive searches that can be
+        conducted without individualized suspicion for purposes of officer
+        safety (ie, for weapons). Terry stops are the ones where,
+        supposedly, the police aren't supposed to be reaching into your
+        pocket. Search incident to arrest, going back over 100 years, has
+        always had a purpose of discovering and preserving evidence; they
+        aren't simply about officer safety.
+
+        That said: a modern smart phone is more than just a container you
+        carry on your person. It can provide access to much of the same
+        personal information that a search of your most personal
+        possessions would. It's a totally reasonable question as to
+        whether an intrusive search of the data on a smartphone falls into
+        the rubrick of what search incident to arrest was meant to cover.
+
+        Either way: make sure your phone is encrypted.
+
+        reply
+        ataggart 1 hour ago | link
+        >the police have always had broad authority to conduct
+        warrantless, intrusive searches at the time of an actual arrest.
+
+        Only insofar as needed to protect the arresting officer from harm
+        or to prevent the destruction of evidence.[1]
+
+        [1] http://en.wikipedia.org/wiki/Arizona_v._Gant
+
+        reply
+        diafygi 9 hours ago | link
+        How do you encrypt your phone?
+
+        reply
+        rdl 9 hours ago | link
+        On iOS, it is by default (actually, you can't turn it off). The
+        random key used is protected by your passcode. A good 80% solution
+        is to use an 8+ character numeric passcode, or a 6+ character
+        alpha passcode.
+
+        Apple can turn off the "try ten times and erase phone" feature,
+        but it still can't brute force faster than ~8 tries per second on
+        a 5S. You might also want to turn off the "apple key escrow"
+        feature.
+
+        reply
+        nodata 9 hours ago | link
+        > but it still can't brute force faster than ~8 tries per second
+        on a 5S
+
+        Yes you can. You image the phone and brute force in parallel.
+
+        Edit: thanks for letting me know this information is wrong!
+
+        reply
+        zaroth 8 hours ago | link
+        If that works, then something is incredibly broken...
+
+        The encryption key, just some random 256-bits, is protected by the
+        rate-limited HSM, which can be unlocked by the passcode. Imaging
+        the flash of another phone with the ciphertext is futile, because
+        that other phone has neither the same key or passcode hash in it's
+        HSM. A different HSM wouldn't be able to decrypt the ciphertext
+        even given the correct passcode.
+
+        The whole point of the HSM is that pulling the key or the passcode
+        hash out of it should be quite difficult... certainly not as easy
+        as imaging the phone!
+
+        reply
+        rdl 8 hours ago | link
+        Right; that's the difference between Apple's hardware and (almost
+        all) Android phones right now -- a dedicated hardware security
+        element. Blackberry has this, too. Old Windows Phone didn't; I'm
+        not sure if WP8 does. It was broken pre-iPad 2/iPhone 4S, though.
+
+        reply
+        wyager 8 hours ago | link
+        The Apple encryption specification claims to use a combination of:
+
+        A)The encryption key burned into the chip's internal HSM
+
+        B)A randomly generated encryption key in effaceable storage
+
+        C)The user's passcode
+
+        Each passcode attempt is protected by 250,000 rounds of some key
+        stretching function (can't remember what exactly) using the
+        device's internal crypto acceleration hardware.
+
+        To successfully parallelize an attack on an iPhone's passcode, you
+        would have to A) get the key out of effaceable storage (can
+        probably be done with a root 0day) and B) extract the HSM's
+        burned-in crypto key (would require a decapping or maybe
+        differential power analysis).
+
+        And even then, you're still stuck with a few hundred thousand
+        rounds of hashing per try, which is pretty brutal.
+
+        reply
+        brigade 8 hours ago | link
+        A link to said spec / whitepaper (it's quite informative!):
+        http://images.apple.com/ipad/business/docs/iOS_Security_Feb1...
+
+        reply
+        oleganza 8 hours ago | link
+        Apple claims that the KDF uses salt fabricated into secure
+        conclave in the CPU. You cannot realistically bruteforce password
+        outside the device since you don't know high-entropy salt. So you
+        have to type in pin code by hand and have your phone erased after
+        N times.
+
+        reply
+        harshreality 9 hours ago | link
+        Stock android: settings - security - encrypt phone (or encrypt
+        device)
+
+        http://www.makeuseof.com/tag/how-to-encrypt-data-on-your-sma...
+
+        That article doesn‘t provide the proper caveat to enabling the
+        erase data option for passcode lock on iphone. It's obviously
+        dangerous if your phone data isn't continuously backed up.
+
+        reply
+        001sky 8 hours ago | link
+        Either way: make sure your phone is encrypted
+
+        > What is to stop them from compelling your PW?
+
+        > Is the 5th amendment sufficiently broad to invoke here for
+        blanket protection?
+
+        reply
+        danielweber 2 hours ago | link
+        IANAL, but the "search incident to arrest," for all its broad
+        powers, still doesn't reach the strength of what a court can
+        compel you to do.
+
+        During arrest, you have the right to remain silent.
+
+        reply
+        webkike 7 hours ago | link
+        The current precedent seems to indicate that no one can make you
+        reveal your passwords. ASFAIK, the EFF was fighting a similar case
+        on these grounds.
+
+        reply
+        guelo 9 hours ago | link
+        Since modern technology keeps extensive track of everybody's life
+        at all times, when police take an interest in you they now get to
+        examine a complete picture of everything about you. What you were
+        doing, what you were going to do, who you've been talking to, who
+        you work for, your family, your sex life, your romantic life, your
+        interests, your politics, your religion, everything. Why get a
+        search warrant if they can just pull you over for not signaling
+        correctly and then get access to your entire life nicely packaged
+        for them?
+
+        Ten years ago they didn't have any of these tools that they now
+        claim are indispensable to do their jobs. How did they do their
+        jobs back then?
+
+        reply
+        higherpurpose 9 hours ago | link
+        That's not even the worst part about it. The worst part is that
+        they get to see all of that and then paint the picture they want
+        about you.
+
+        reply
+        opendais 9 hours ago | link
+        Which is why I encrypt my phone. I really, really don't want to be
+        responsible for the police invading the privacy of people I'm in
+        contact with.
+
+        Because, a phone isn't just you. It is you and everyone you
+        communicate with.
+
+        reply
+        greenwalls 1 hour ago | link
+        Do you think the kill switches mentioned in this article are
+        really to help with mobile phone thefts? It's probably more likely
+        the kill switches will be used to turn off phones in areas where
+        people are doing things the government doesn't like. Want to take
+        a photo of that police officer beating your friend? Sorry, kill
+        switch.
+
+        reply
+        appleflaxen 1 hour ago | link
+        Police work /should/ be hard. We don't /want/ it to be trivial for
+        police to poke around in the depths of your personal data, fishing
+        for reasons to think you might have done something wrong in the
+        past.
+
+        "my job is difficult" is not sufficient reason to justify what
+        they are asking for.
+
+        reply
+        beedogs 9 hours ago | link
+        As the article mentions, there's no real need for these search
+        powers, when the phone can simply be turned off or physically
+        taken out of range of reception to prevent it from being wiped.
+        The feds have yet to prove this is even a real problem.
+
+        reply
+        scintill76 7 hours ago | link
+        What about a "dead-man's switch" that wipes if the authorized user
+        doesn't authenticate every 30 minutes or so? If network
+        connectivity is lost for too long? And turning it off risks losing
+        resident data on the latest activities of the phone, encryption
+        keys in memory, etc.
+
+        I'm by no means a whole-hearted supporter of DOJ's position on
+        this, but I think their opponents are also exaggerating the
+        availability of other options to collect evidence later.
+
+        reply
+        YokoZar 7 hours ago | link
+        That dead man's switch sounds like a great way to wipe your phone
+        every time you take a nap.
+
+        Regardless, if the hypothetical possiblity that some incredibly
+        uncommon dead man's switch exists is justification for this sort
+        of search, then only allow that sort of search if the police have
+        some sort of reasonable suspicion such a switch exists.
+
+        It's analogous to how unwarranted home searches are permitted only
+        if an officer reasonably believes there's imminent destruction of
+        evidence - we don't just allow all home searches without warrants
+        because somewhere out there someone might destroy evidence in
+        their house.
+
+        reply
+        scintill76 6 hours ago | link
+        If I were a drug dealer, I think I'd take on pretty onerous risks
+        like that. You could reconfigure the wipe interval and/or drop all
+        sensitive data from RAM and leave it in a safe encrypted state, as
+        the situation requires.
+
+        You have good points. Both sides seem to be pushing for the
+        extreme permissiveness or restriction in their respective
+        viewpoints, but the best probably lies in between, as you say.
+
+        reply
+        verytrivial 4 hours ago | link
+        That sounds very risky to me. I would prefer a second passcode
+        that when entered quietly destroys the cryptographic key.
+
+        reply
+        nnx 2 hours ago | link
+        One reasonable alternative is to use Apple Configurator and set
+        the number of failed attempts before wipe to much lower than the
+        default 10, say 2 failed attempts only.
+
+        http://help.apple.com/configurator/mac/1.5/#cadbf9d00f
+
+        reply
+        sitkack 8 hours ago | link
+        Why are warrants so bad? How about a public log of every agent and
+        what they searched for and why they searched it.
+
+        I believe we would be exposed to the inanity of their methods and
+        means. It is sheer embarrassment that they don't want their
+        actions logged.
+
+        reply
+        EGreg 4 hours ago | link
+        Exactly.
+        http://www.theguardian.com/world/2013/nov/04/california-poli...
+
+        reply
+        rdl 9 hours ago | link
+        I'm completely un-surprised this came up in the context of a drug
+        arrest.
+
+        reply
+
+       Lists | RSS | Bookmarklet | Guidelines | FAQ | DMCA | News News |
+            Feature Requests | Bugs | Y Combinator | Apply | Library
+
+                           Search: __________________

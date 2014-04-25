@@ -1,0 +1,438 @@
+<rss version='2.0'>
+  <channel>
+    <title>
+      Hacker News
+    </title>
+    <link>
+      https:&#x2F;&#x2F;news.ycombinator.com&#x2F;
+    </link>
+    <description>
+      Links for the intellectually curious, ranked by readers.
+    </description>
+    <item>
+      <title>
+        Click – Python library for command line interfaces
+      </title>
+      <link>
+        http:&#x2F;&#x2F;click.pocoo.org&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639214
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639214">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Danish government builds minecraft world of Denmark from geodata
+      </title>
+      <link>
+        http:&#x2F;&#x2F;gst.dk&#x2F;emner&#x2F;frie-data&#x2F;minecraft&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639136
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639136">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Boycott systemd
+      </title>
+      <link>
+        http:&#x2F;&#x2F;boycottsystemd.org&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639170
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639170">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        4chan source code leaked (2010)
+      </title>
+      <link>
+        http:&#x2F;&#x2F;pastebin.com&#x2F;a45dp3Q1
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639238
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639238">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        CEO complaints : employee not motivated after being fired
+      </title>
+      <link>
+        http:&#x2F;&#x2F;www.linkedin.com&#x2F;today&#x2F;post&#x2F;article&#x2F;20140423114614-44558-shades-of-grey
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639180
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639180">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        The Bubble Question
+      </title>
+      <link>
+        http:&#x2F;&#x2F;avc.com&#x2F;2014&#x2F;03&#x2F;the-bubble-question&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638731
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638731">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        “Game Programming Patterns” is now finished
+      </title>
+      <link>
+        http:&#x2F;&#x2F;gameprogrammingpatterns.com&#x2F;?completed
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7634734
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7634734">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Am I evil, or is killing patents just plain fun?
+      </title>
+      <link>
+        https:&#x2F;&#x2F;inventropy.us&#x2F;blog&#x2F;is-killing-patents-just-plain-fun&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638099
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638099">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Previously unknown Warhol works recovered from Amiga floppy disks from
+        1985
+      </title>
+      <link>
+        http:&#x2F;&#x2F;studioforcreativeinquiry.org&#x2F;events&#x2F;warhol-discovery
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638904
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638904">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Alan Kay + Brewster Kahle + Ted Nelson. Starts@9:30AM PDT
+      </title>
+      <link>
+        http:&#x2F;&#x2F;chapman.edu&#x2F;events&#x2F;intertwingled&#x2F;index.aspx
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639599
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639599">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Excel formulas in JavaScript 
+      </title>
+      <link>
+        https:&#x2F;&#x2F;github.com&#x2F;sutoiku&#x2F;formula.js
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638879
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638879">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Sherpas, Death, and Anger on Everest 
+      </title>
+      <link>
+        http:&#x2F;&#x2F;www.newyorker.com&#x2F;online&#x2F;blogs&#x2F;newsdesk&#x2F;2014&#x2F;04&#x2F;everest-sherpas-death-and-anger.html?mobify=0
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638311
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638311">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Feds Beg Supreme Court to Let Them Search Phones Without a Warrant
+      </title>
+      <link>
+        http:&#x2F;&#x2F;www.wired.com&#x2F;2014&#x2F;04&#x2F;smartphone-kill-switch
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638335
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638335">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Core Infrastructure Initiative
+      </title>
+      <link>
+        http:&#x2F;&#x2F;www.linuxfoundation.org&#x2F;programs&#x2F;core-infrastructure-initiative
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639835
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639835">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        What I Wish I Knew When Learning Haskell 2.0
+      </title>
+      <link>
+        http:&#x2F;&#x2F;dev.stephendiehl.com&#x2F;hask&#x2F;#cabal
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7637278
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7637278">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Why is asbestos still killing people?
+      </title>
+      <link>
+        http:&#x2F;&#x2F;mosaicscience.com&#x2F;story&#x2F;killer-dust
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638519
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638519">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        The Shakespeare Programming Language
+      </title>
+      <link>
+        http:&#x2F;&#x2F;shakespearelang.sourceforge.net&#x2F;report&#x2F;shakespeare&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639119
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639119">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Telegram team left Russia and looking for a country to work from
+      </title>
+      <link>
+        https:&#x2F;&#x2F;www.facebook.com&#x2F;durov&#x2F;posts&#x2F;10152105672952029
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639035
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639035">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Mail-in-a-box: easy to set up modern SMTP&#x2F;SMTPS server stack
+      </title>
+      <link>
+        https:&#x2F;&#x2F;github.com&#x2F;JoshData&#x2F;mailinabox
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7634514
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7634514">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        IBM, Microsoft, Facebook, Google, others pledge $3.6 million to fund
+        OpenSSL
+      </title>
+      <link>
+        http:&#x2F;&#x2F;arstechnica.com&#x2F;information-technology&#x2F;2014&#x2F;04&#x2F;tech-giants-chastened-by-heartbleed-finally-agree-to-fund-openssl&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639707
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639707">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Crazy Post Processing Color Effects to Change Your THREE.js Game
+        Ambiance
+      </title>
+      <link>
+        http:&#x2F;&#x2F;learningthreejs.com&#x2F;blog&#x2F;2014&#x2F;04&#x2F;24&#x2F;crazy-post-processing-color-effects-to-change-your-game-ambiance-with-threex-dot-coloradjust-game-extension-for-three-dot-js&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639554
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639554">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        LibreSSL: FIPS mode is not coming back
+      </title>
+      <link>
+        http:&#x2F;&#x2F;marc.info&#x2F;?l=openbsd-misc&amp;m=139819485423701&amp;w=2
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7634964
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7634964">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Artery chokes after 70 copies of Visual Studio
+      </title>
+      <link>
+        https:&#x2F;&#x2F;connect.microsoft.com&#x2F;VisualStudio&#x2F;feedback&#x2F;details&#x2F;812643&#x2F;artery-chokes-after-70-copies-of-visual-studio
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7639653
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7639653">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Modern-day cleanroom invented by Sandia physicist still used 50 years
+        later 
+      </title>
+      <link>
+        https:&#x2F;&#x2F;share.sandia.gov&#x2F;news&#x2F;resources&#x2F;news_releases&#x2F;cleanroom_50th&#x2F;#.U1eze_ldU5B
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638670
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638670">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        The Machine Stops (1909)
+      </title>
+      <link>
+        http:&#x2F;&#x2F;archive.ncsa.illinois.edu&#x2F;prajlich&#x2F;forster.html
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7637635
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7637635">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Show HN: NCurses Terminal Webcam
+      </title>
+      <link>
+        https:&#x2F;&#x2F;github.com&#x2F;mustafaakin&#x2F;terminal-webcam
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7637629
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7637629">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Band releases album as kernel module
+      </title>
+      <link>
+        https:&#x2F;&#x2F;github.com&#x2F;usrbinnc&#x2F;netcat-cpi-kernel-module
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7636665
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7636665">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Painless Windows Workstation Setup with Boxstarter
+      </title>
+      <link>
+        http:&#x2F;&#x2F;trycatchfail.com&#x2F;blog&#x2F;post&#x2F;Painless-Workstation-Setup-with-Boxstarter.aspx
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7638285
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7638285">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        Project Naptha: a browser extension that enables text selection on any
+        image
+      </title>
+      <link>
+        http:&#x2F;&#x2F;projectnaptha.com&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7629396
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7629396">Comments</a>]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        How ACH works: A developer perspective
+      </title>
+      <link>
+        http:&#x2F;&#x2F;engineering.zenpayroll.com&#x2F;how-ach-works-a-developer-perspective-part-1&#x2F;
+      </link>
+      <comments>
+        https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7636066
+      </comments>
+      <description>
+        <![CDATA[<a href="https://news.ycombinator.com/item?id=7636066">Comments</a>]]>
+      </description>
+    </item>
+  </channel>
+</rss>
