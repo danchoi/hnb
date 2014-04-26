@@ -51,14 +51,25 @@ scribed:
   [<a href="http://www.scribd.com/vacuum?url=https://www.mtgox.com/img/pdf/20140424_announce_qa_en.pdf">scribd</a>]
   <span class="comhead"> (mtgox.com) </span>
 </td>
+
+Domain:
+
+  May have domain, may not if Ask HN:
+
+<td class="title"><a href="http://chr13.com/2014/04/20/using-facebook-notes-to-ddos-any-website/?">Using Facebook Notes to DDoS any website</a><span class="comhead"> (chr13.com) </span></td>
+<td class="title"><a href="item?id=7650916">Ask HN: How does your home office look like?</a></td>
+
 -}
 
+
 parseRank = getChildren >>> getText >>^ read . Prelude.takeWhile isDigit
+
+parseDomain = (tdTitleNode >>> getChildren >>> isElem >>> hasName "span") >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack
 
 parsedItem1 = proc x -> do
     r <- (tdRank >>> parseRank) >>. Prelude.take 1 -< x
     t <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getChildren >>> getText -< x
-    d <- (tdTitleNode >>> getChildren >>> isElem >>> hasName "span") >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack -< x
+    d <- parseDomain `orElse` constA "-" -< x
     h <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getAttrValue "href" -< x
     returnA -< Title r t d h
 
@@ -108,16 +119,16 @@ parseSubText s = case parseOnly (subText <|> other) (T.pack s) of
   Right x -> x
 
 
-header = intercalate "\t" ["rank", "points", "title", "domain", "comments", "time", "href", "commentsUrl"]
+header = intercalate "\t" ["#", "pts", "com", "title", "domain", "time", "href", "commentsUrl"]
 
-lineFmt = "%d\t%d\t%s\t%s\t%d\t%s\t%s\t%s\n"
+lineFmt = "%d\t%d\t%d\t%s\t%s\t%s\t%s\t%s\n"
 
 -- placeholder
 ph :: String
 ph = "-" 
 
-printTitle (Title{..}, Subtext{..})      = printf lineFmt      rank points title domain comments (printTime ago) href commentsUrl 
-printTitle (Title{..}, OtherSubtext{..}) = printf "%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" rank ph title domain ph (printTime ago) href ph
+printTitle (Title{..}, Subtext{..})      = printf lineFmt      rank points comments title domain (printTime ago) href commentsUrl 
+printTitle (Title{..}, OtherSubtext{..}) = printf "%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" rank ph ph title domain (printTime ago) href ph
 
 printTime (Time a u) = show a ++ " " ++ u ++ " ago"
 
@@ -127,6 +138,7 @@ main = do
   links <- runX $ doc //> items >>> parsedItem1
   -- mapM_ print links
   links2 <- runX $ doc //> items2 >>> listA parsedItem2 >>> arr concat
+  -- mapM_ print $ zip links ( map parseSubText links2 )
   putStrLn header
   mapM_ printTitle $ zip links ( map parseSubText links2 )
 

@@ -71,3 +71,12 @@ getSections = addNav >>>
 ["941 points"," by ","antimatter15"," 1 day ago  | ","129 comments"]
 ["52 points"," by ","mbhoneycutt"," 10 hours ago  | ","26 comments"]
 fg
+
+[choi@sparta hnv]$ cut -f 1-6 1.out  | ./tsv.sh 
+
+
+
+iconv
+
+[choi@sparta hnv]$ cat 1.out | iconv -f UTF-8 -t US-ASCII//TRANSLIT | cut -f 1-6 | ./tsv.sh 
+
