@@ -20,6 +20,7 @@ executable hnhome
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.6 && <4.7,
-                       hxt
+                       hxt,
+                       split
   hs-source-dirs:      .
   default-language:    Haskell2010
