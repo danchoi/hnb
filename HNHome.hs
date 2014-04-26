@@ -8,6 +8,7 @@ import qualified Data.Text as T
 import Data.Attoparsec.Text
 import Control.Applicative
 import Text.Printf
+import Text.HandsomeSoup
 
 data Title = Title {
     rank :: Int
@@ -32,21 +33,36 @@ type TimeUnit = String
 items = (isElem >>> hasName "tr") `containing` tdRank
 items2 = (isElem >>> hasName "tr") `containing` tdSubtext
 
-
 tdRank = (deep getChildren >>> hasName "td" >>> hasAttrValue "class" (== "title") )
 
 tdSubtext = (deep getChildren >>> hasName "td" >>> hasAttrValue "class" (== "subtext") )
 
 tdTitleNode = (getChildren >>> isElem >>> hasName "td") 
 
-parsedItems1 = proc x -> do
-    r <- tdRank >>> getChildren >>> getText >>^ read . Prelude.takeWhile isDigit -< x
-    t <- tdTitleNode /> isElem >>> hasName "a" >>> getChildren >>> getText -< x
-    d <- tdTitleNode /> isElem >>> hasName "span" >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack -< x
-    h <- tdTitleNode /> isElem >>> hasName "a" >>> getAttrValue "href" -< x
+{-
+Two possibilities:
+
+Normal:
+<td class="title"><a href="http://storagemojo.com/2014/04/25/amazons-glacier-secret-bdxl/">Amazonâ€™s Glacier secret: BDXL?</a><span class="comhead"> (storagemojo.com) </span></td>
+
+scribed:
+<td class="title">
+  <a href="https://www.mtgox.com/img/pdf/20140424_announce_qa_en.pdf">Mt. Gox commences bankruptcy proceedings</a> 
+  [<a href="http://www.scribd.com/vacuum?url=https://www.mtgox.com/img/pdf/20140424_announce_qa_en.pdf">scribd</a>]
+  <span class="comhead"> (mtgox.com) </span>
+</td>
+-}
+
+parseRank = getChildren >>> getText >>^ read . Prelude.takeWhile isDigit
+
+parsedItem1 = proc x -> do
+    r <- (tdRank >>> parseRank) >>. Prelude.take 1 -< x
+    t <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getChildren >>> getText -< x
+    d <- (tdTitleNode >>> getChildren >>> isElem >>> hasName "span") >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack -< x
+    h <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getAttrValue "href" -< x
     returnA -< Title r t d h
 
-parsedItems2 = proc x -> do
+parsedItem2 = proc x -> do
     a <- tdSubtext //> (deep getText <+> deep (hasName "a" >>> hasAttrValue "href" ("item" `isPrefixOf`) >>> getAttrValue "href" >>^ (' ':)) ) -< x
     returnA -< a
 
@@ -108,8 +124,9 @@ printTime (Time a u) = show a ++ " " ++ u ++ " ago"
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
-  links <- runX $ doc //> items >>> parsedItems1
-  links2 <- runX $ doc //> items2 >>> listA parsedItems2 >>> arr concat
+  links <- runX $ doc //> items >>> parsedItem1
+  -- mapM_ print links
+  links2 <- runX $ doc //> items2 >>> listA parsedItem2 >>> arr concat
   putStrLn header
   mapM_ printTitle $ zip links ( map parseSubText links2 )
 

@@ -23,6 +23,7 @@ executable hnhome
                        hxt,
                        split,
                        attoparsec,
-                       text
+                       text,
+                       HandsomeSoup
   hs-source-dirs:      .
   default-language:    Haskell2010
