@@ -8,7 +8,7 @@ import qualified Data.Text as T
 import Data.Attoparsec.Text
 import Control.Applicative
 
-data ItemTop = ItemTop {
+data Title = Title {
     rank :: Int
   , title :: String
   , domain :: String
@@ -43,7 +43,7 @@ parsedItems1 = proc x -> do
     t <- tdTitleNode /> isElem >>> hasName "a" >>> getChildren >>> getText -< x
     d <- tdTitleNode /> isElem >>> hasName "span" >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack -< x
     h <- tdTitleNode /> isElem >>> hasName "a" >>> getAttrValue "href" -< x
-    returnA -< ItemTop r t d h
+    returnA -< Title r t d h
 
 parsedItems2 = proc x -> do
     a <- tdSubtext //> (deep getText <+> deep (hasName "a" >>> hasAttrValue "href" ("item" `isPrefixOf`) >>> getAttrValue "href" >>^ (' ':)) ) -< x
