@@ -48,6 +48,6 @@ main = do
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
   links <- runX $ doc //> items >>> parsedItems1
-  print links
-  links2 <- runX $ doc //> items2 >>> listA parsedItems2
-  mapM_ print links2
+  -- print links
+  links2 <- runX $ doc //> items2 >>> listA parsedItems2 >>> arr concat
+  mapM_ print $ zip links links2
