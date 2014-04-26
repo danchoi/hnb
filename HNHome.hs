@@ -2,6 +2,7 @@
 module Main where
 import Text.XML.HXT.Core
 import Data.Char
+import Data.List (isPrefixOf)
 import qualified Data.List.Split as L
 import qualified Data.Text as T
 import Data.Attoparsec.Text
@@ -18,11 +19,11 @@ data Item = Item {
 data Subtext = Subtext {
     points :: Int
   , user :: String
-  , when :: Time
-  , comments :: Int }
-  | Other {
-    when :: Time 
-  } deriving (Show)
+  , ago :: Time
+  , comments :: Int
+  , commentsUrl :: String 
+  } 
+  | OtherSubtext { ago :: Time } deriving (Show)
 
 data Time = Time Int TimeUnit deriving (Show)
 
@@ -47,7 +48,7 @@ parsedItems1 = proc x -> do
     returnA -< (r, t, d, h)
 
 parsedItems2 = proc x -> do
-    a <- tdSubtext //> getText -< x
+    a <- tdSubtext //> (deep getText <+> deep (hasName "a" >>> hasAttrValue "href" ("item" `isPrefixOf`) >>> getAttrValue "href" >>^ (' ':)) ) -< x
     returnA -< a
 
 -- parsec
@@ -68,13 +69,15 @@ subText = do
     many space
     string "|" 
     many space
-    c <- (string "discuss" *> pure "0") <|> (takeWhile1 isDigit <* takeText) 
-    return $ Subtext (read . T.unpack $ points) (T.unpack user) t (read . T.unpack $ c)
+    c <- (string "discuss" *> pure "0") <|> (takeWhile1 isDigit <* (string " comments" <|>  string " comment"))
+    url <- space >> takeText 
+    return $ Subtext (read . T.unpack $ points) (T.unpack user) t (read . T.unpack $ c) 
+      (T.unpack url)
 
 other :: Parser Subtext
 other = do 
     t <- timeUnit
-    return $ Other t
+    return $ OtherSubtext t 
 
 timeUnit :: Parser Time
 timeUnit = do     
