@@ -68,7 +68,7 @@ subText = do
     many space
     string "|" 
     many space
-    c <- ("0" <$ string "discuss") <|> (takeWhile1 isDigit <* takeText) 
+    c <- (string "discuss" *> pure "0") <|> (takeWhile1 isDigit <* takeText) 
     return $ Subtext (read . T.unpack $ points) (T.unpack user) t (read . T.unpack $ c)
 
 other :: Parser Subtext
