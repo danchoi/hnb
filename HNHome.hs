@@ -8,12 +8,11 @@ import qualified Data.Text as T
 import Data.Attoparsec.Text
 import Control.Applicative
 
-data Item = Item {
-    rank :: String
+data ItemTop = ItemTop {
+    rank :: Int
   , title :: String
   , domain :: String
   , href :: String
-  -- , points :: String
   } deriving (Show)
 
 data Subtext = Subtext {
@@ -40,12 +39,11 @@ tdSubtext = (deep getChildren >>> hasName "td" >>> hasAttrValue "class" (== "sub
 tdTitleNode = (getChildren >>> isElem >>> hasName "td") 
 
 parsedItems1 = proc x -> do
-    r <- tdRank >>> getChildren >>> getText -< x
+    r <- tdRank >>> getChildren >>> getText >>^ read . Prelude.takeWhile isDigit -< x
     t <- tdTitleNode /> isElem >>> hasName "a" >>> getChildren >>> getText -< x
-    d <- tdTitleNode /> isElem >>> hasName "span" >>> getChildren >>> getText -< x
+    d <- tdTitleNode /> isElem >>> hasName "span" >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack -< x
     h <- tdTitleNode /> isElem >>> hasName "a" >>> getAttrValue "href" -< x
-    -- p <- nextSibling >>> (deep getText) -< x
-    returnA -< (r, t, d, h)
+    returnA -< ItemTop r t d h
 
 parsedItems2 = proc x -> do
     a <- tdSubtext //> (deep getText <+> deep (hasName "a" >>> hasAttrValue "href" ("item" `isPrefixOf`) >>> getAttrValue "href" >>^ (' ':)) ) -< x
