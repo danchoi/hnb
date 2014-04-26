@@ -1,4 +1,4 @@
-{-# LANGUAGE Arrows, NoMonomorphismRestriction, OverloadedStrings, ScopedTypeVariables #-}
+{-# LANGUAGE Arrows, NoMonomorphismRestriction, OverloadedStrings, ScopedTypeVariables, RecordWildCards #-}
 module Main where
 import Text.XML.HXT.Core
 import Data.Char
@@ -7,6 +7,7 @@ import qualified Data.List.Split as L
 import qualified Data.Text as T
 import Data.Attoparsec.Text
 import Control.Applicative
+import Text.Printf
 
 data Title = Title {
     rank :: Int
@@ -24,7 +25,7 @@ data Subtext = Subtext {
   } 
   | OtherSubtext { ago :: Time } deriving (Show)
 
-data Time = Time Int TimeUnit deriving (Show)
+data Time = Time { amount :: Int, unit :: TimeUnit } deriving (Show)
 
 type TimeUnit = String
 
@@ -91,16 +92,17 @@ parseSubText s = case parseOnly (subText <|> other) (T.pack s) of
   Right x -> x
 
 
+printTitle (Title{..}, Subtext{..}) = printf "%d\t%d\t%s\t%s\t%d\t%s\t%s\t%s\n" rank points title domain comments (printTime ago) href commentsUrl 
+printTitle (Title{..}, OtherSubtext{..}) = printf "%d\n" rank
+
+printTime (Time a u) = show a ++ " " ++ u ++ " ago"
 
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
   links <- runX $ doc //> items >>> parsedItems1
-  -- print links
   links2 <- runX $ doc //> items2 >>> listA parsedItems2 >>> arr concat
-  mapM_ print $ links2 
-  mapM_ print $ map parseSubText links2 
-  mapM_ print $ zip links ( map parseSubText links2 )
+  mapM_ printTitle $ zip links ( map parseSubText links2 )
 
 
 {-
