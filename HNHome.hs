@@ -2,7 +2,7 @@
 module Main where
 import Text.XML.HXT.Core
 import Data.Char
-import Data.List (isPrefixOf)
+import Data.List (isPrefixOf, intercalate)
 import qualified Data.List.Split as L
 import qualified Data.Text as T
 import Data.Attoparsec.Text
@@ -92,8 +92,16 @@ parseSubText s = case parseOnly (subText <|> other) (T.pack s) of
   Right x -> x
 
 
-printTitle (Title{..}, Subtext{..}) = printf "%d\t%d\t%s\t%s\t%d\t%s\t%s\t%s\n" rank points title domain comments (printTime ago) href commentsUrl 
-printTitle (Title{..}, OtherSubtext{..}) = printf "%d\n" rank
+header = intercalate "\t" ["rank", "points", "title", "domain", "comments", "time", "href", "commentsUrl"]
+
+lineFmt = "%d\t%d\t%s\t%s\t%d\t%s\t%s\t%s\n"
+
+-- placeholder
+ph :: String
+ph = "-" 
+
+printTitle (Title{..}, Subtext{..})      = printf lineFmt      rank points title domain comments (printTime ago) href commentsUrl 
+printTitle (Title{..}, OtherSubtext{..}) = printf "%d\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" rank ph title domain ph (printTime ago) href ph
 
 printTime (Time a u) = show a ++ " " ++ u ++ " ago"
 
@@ -102,6 +110,7 @@ main = do
   let doc = readString [withParseHTML yes, withWarnings no] html
   links <- runX $ doc //> items >>> parsedItems1
   links2 <- runX $ doc //> items2 >>> listA parsedItems2 >>> arr concat
+  putStrLn header
   mapM_ printTitle $ zip links ( map parseSubText links2 )
 
 

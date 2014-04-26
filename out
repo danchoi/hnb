@@ -1,3 +1,4 @@
+rank	points	title	domain	comments	time	href	commentsUrl
 1	113	Click – Python library for command line interfaces	(pocoo.org)	48	3 hours ago	http://click.pocoo.org/	item?id=7639214
 2	26	Core Infrastructure Initiative	(linuxfoundation.org)	5	54 minutes ago	http://www.linuxfoundation.org/programs/core-infrastructure-initiative	item?id=7639835
 3	129	Boycott systemd	(boycottsystemd.org)	106	3 hours ago	http://boycottsystemd.org/	item?id=7639170
@@ -5,26 +6,3 @@
 5	34	Artery chokes after 70 copies of Visual Studio	(microsoft.com)	16	1 hour ago	https://connect.microsoft.com/VisualStudio/feedback/details/812643/artery-chokes-after-70-copies-of-visual-studio	item?id=7639653
 6	156	CEO complaints : employee not motivated after being fired	(linkedin.com)	170	3 hours ago	http://www.linkedin.com/today/post/article/20140423114614-44558-shades-of-grey	item?id=7639180
 7	86	4chan source code leaked (2010)	(pastebin.com)	72	3 hours ago	http://pastebin.com/a45dp3Q1	item?id=7639238
-8
-9	128	The Bubble Question	(avc.com)	45	7 hours ago	http://avc.com/2014/03/the-bubble-question/	item?id=7638731
-10	14	Alan Kay + Brewster Kahle + Ted Nelson. Starts@9:30AM PDT	(chapman.edu)	2	1 hour ago	http://chapman.edu/events/intertwingled/index.aspx	item?id=7639599
-11	768	“Game Programming Patterns” is now finished	(gameprogrammingpatterns.com)	64	21 hours ago	http://gameprogrammingpatterns.com/?completed	item?id=7634734
-12	219	Am I evil, or is killing patents just plain fun?	(inventropy.us)	95	11 hours ago	https://inventropy.us/blog/is-killing-patents-just-plain-fun/	item?id=7638099
-13	56	Previously unknown Warhol works recovered from Amiga floppy disks from 1985	(studioforcreativeinquiry.org)	11	5 hours ago	http://studioforcreativeinquiry.org/events/warhol-discovery	item?id=7638904
-14	39	IBM, Microsoft, Facebook, Google, others pledge $3.6 million to fund OpenSSL	(arstechnica.com)	7	1 hour ago	http://arstechnica.com/information-technology/2014/04/tech-giants-chastened-by-heartbleed-finally-agree-to-fund-openssl/	item?id=7639707
-15	53	Excel formulas in JavaScript 	(github.com)	23	6 hours ago	https://github.com/sutoiku/formula.js	item?id=7638879
-16	7	How to Analyze a Patent	(greenspun.com)	0	1 hour ago	http://philip.greenspun.com/software/patent-analysis/	item?id=7639642
-17	100	Sherpas, Death, and Anger on Everest 	(newyorker.com)	34	10 hours ago	http://www.newyorker.com/online/blogs/newsdesk/2014/04/everest-sherpas-death-and-anger.html?mobify=0	item?id=7638311
-18	107	Feds Beg Supreme Court to Let Them Search Phones Without a Warrant	(wired.com)	28	10 hours ago	http://www.wired.com/2014/04/smartphone-kill-switch	item?id=7638335
-19	195	What I Wish I Knew When Learning Haskell 2.0	(stephendiehl.com)	67	15 hours ago	http://dev.stephendiehl.com/hask/#cabal	item?id=7637278
-20	65	Telegram team left Russia and looking for a country to work from	(facebook.com)	70	4 hours ago	https://www.facebook.com/durov/posts/10152105672952029	item?id=7639035
-21	66	Why is asbestos still killing people?	(mosaicscience.com)	35	8 hours ago	http://mosaicscience.com/story/killer-dust	item?id=7638519
-22	328	Mail-in-a-box: easy to set up modern SMTP/SMTPS server stack	(github.com)	136	22 hours ago	https://github.com/JoshData/mailinabox	item?id=7634514
-23	6	Crazy Post Processing Color Effects to Change Your THREE.js Game Ambiance	(learningthreejs.com)	1	1 hour ago	http://learningthreejs.com/blog/2014/04/24/crazy-post-processing-color-effects-to-change-your-game-ambiance-with-threex-dot-coloradjust-game-extension-for-three-dot-js/	item?id=7639554
-24	242	LibreSSL: FIPS mode is not coming back	(marc.info)	86	21 hours ago	http://marc.info/?l=openbsd-misc&m=139819485423701&w=2	item?id=7634964
-25	99	The Machine Stops (1909)	(illinois.edu)	24	13 hours ago	http://archive.ncsa.illinois.edu/prajlich/forster.html	item?id=7637635
-26	33	Modern-day cleanroom invented by Sandia physicist still used 50 years later 	(sandia.gov)	6	7 hours ago	https://share.sandia.gov/news/resources/news_releases/cleanroom_50th/#.U1eze_ldU5B	item?id=7638670
-27	146	Band releases album as kernel module	(github.com)	36	17 hours ago	https://github.com/usrbinnc/netcat-cpi-kernel-module	item?id=7636665
-28	92	Show HN: NCurses Terminal Webcam	(github.com)	31	13 hours ago	https://github.com/mustafaakin/terminal-webcam	item?id=7637629
-29	941	Project Naptha: a browser extension that enables text selection on any image	(projectnaptha.com)	129	1 day ago	http://projectnaptha.com/	item?id=7629396
-30	52	Painless Windows Workstation Setup with Boxstarter	(trycatchfail.com)	26	10 hours ago	http://trycatchfail.com/blog/post/Painless-Workstation-Setup-with-Boxstarter.aspx	item?id=7638285
