@@ -61,7 +61,7 @@ parsedItems2 = proc x -> do
 subText :: Parser Subtext
 subText = do
     points <- takeWhile1 isDigit
-    string " points by "
+    string " points by " <|> string " point by "
     user <- takeWhile1 (not.isSpace)
     space
     t <- timeUnit
