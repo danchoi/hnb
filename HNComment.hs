@@ -79,12 +79,23 @@ item = proc x -> do
 
 -}
 
+printComment :: Comment -> IO () 
+printComment Comment{..} = 
+    let ps = map (pad nesting) text
+        pad n s = (Prelude.take (n `div` 10) $ repeat ' ') ++ s
+    in do 
+      putStrLn $ intercalate "\n\n" ps
+      putStrLn ""
+      putStrLn $ pad nesting $ author ++ " " ++ timestamp
+      putStrLn "\n"
+
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
   xs <- runX $ doc >>> comments  >>> item
   -- xs <- runX $ doc >>> comments 
-  mapM_ print xs
+  -- mapM_ print xs
+  mapM_ printComment xs
   title <- runX $ doc >>> css "head title" >>> getChildren >>> getText
   print title
   postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
