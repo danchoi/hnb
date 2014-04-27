@@ -6,13 +6,14 @@ import Data.List (isPrefixOf, intercalate)
 import qualified Data.List.Split as L
 import qualified Data.Text as T
 import Data.Attoparsec.Text
+import qualified Data.Attoparsec.Text as Atto
 import Control.Applicative
 import Text.Printf
 import Text.HandsomeSoup
 
 data Comment = Comment {
     nesting :: Int
-  , text :: String
+  , text :: T.Text
   , author :: String
   , timestamp :: String
   } deriving (Show)
@@ -21,19 +22,23 @@ items = css "table table table"
 
 indentImg = deep ( hasName "img" >>> hasAttrValue "src" (== "s.gif"))
 
-{-
-parseTimestamp s = case parseOnly (subText <|> other) (T.pack s) of
-  Left err -> error $ "Failed to parse input " ++ err
-  Right x -> x
-  -}
+parseTimestamp s = case parseOnly ptimestamp (T.pack s) of
+    Left err -> error $ "Failed to parse input " ++ err
+    Right x -> x
 
+ptimestamp :: Parser String
+ptimestamp = do 
+    many space
+    x <- Atto.takeWhile (`notElem` ['|'])
+    takeText
+    return . T.unpack . T.strip $ x
 
 item = proc x -> do
     n <- indentImg >>> getAttrValue "width" >>^ read . Prelude.takeWhile isDigit -< x
-    t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat -< x
-            -- listA (deep (getChildren >>> hasAttrValue "class" (== "comment") >>> deep getText)) >>> arr concat   -< x
+    t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat >>^ T.pack -< x
     a <- css "span.comhead" >>> css "a:first-child" >>> getChildren >>> getText -< x
-    ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat -< x
+    -- ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat -< x
+    ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat >>^ parseTimestamp -< x
     returnA -< Comment n t a ts
 
 {-
