@@ -80,3 +80,37 @@ iconv
 
 [choi@sparta hnv]$ cat 1.out | iconv -f UTF-8 -t US-ASCII//TRANSLIT | cut -f 1-6 | ./tsv.sh 
 
+
+------------------------------------------------------------------------
+comments:
+
+Some can have pre tags:
+
+                    <td class="default">
+                      <div style="margin-top:2px; margin-bottom:-10px;">
+                        <span class="comhead"><a href="user?id=eridius">eridius</a> 5 hours ago | <a href="item?id=7654189">link</a></span>
+                      </div><br>
+                      <span class="comment"><font color="#000000">The first example is not emergent behavior. And it has nothing at all to
+                      do with the implicit nature of interfaces. It is in fact a pretty straightforward consequence of the fact that
+                      functions are first-class types. Because they're types, you can newtype them, and you can implement interfaces on the
+                      newtype. This should work in any language that has interfaces and first-class functions.</font></span>
+
+                      <p><span class="comment"><font color="#000000">For reference, here's the exact same thing in Rust:</font></span></p>
+                      <pre>
+<span class="comment"><font color="#000000"><code>    // Define trait Foo, this is the equivalent of an interface
+    pub trait Foo {
+        fn foo(&amp;self, x: int) -&gt; int;
+    }
+
+    // Define a newtype called FooFunc
+    pub struct FooFunc(fn(x:int) -&gt; int);
+
+    // Explicitly implement the trait on FooFunc
+    impl Foo for FooFunc {
+        fn foo(&amp;self, x: int) -&gt; int {
+            let &amp;FooFunc(f) = self; // unwrap the newtype
+            f(x)
+        }
+    }
+
+    /

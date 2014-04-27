@@ -64,7 +64,9 @@ Domain:
 
 parseRank = getChildren >>> getText >>^ read . Prelude.takeWhile isDigit
 
-parseDomain = (tdTitleNode >>> getChildren >>> isElem >>> hasName "span") >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . T.strip . T.pack
+parseDomain = (tdTitleNode >>> getChildren >>> isElem >>> hasName "span") 
+      >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . removeParens . T.strip . T.pack
+   where removeParens = T.tail . T.init
 
 parsedItem1 = proc x -> do
     r <- (tdRank >>> parseRank) >>. Prelude.take 1 -< x
