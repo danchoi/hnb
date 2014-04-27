@@ -33,7 +33,7 @@ item = proc x -> do
     t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat -< x
             -- listA (deep (getChildren >>> hasAttrValue "class" (== "comment") >>> deep getText)) >>> arr concat   -< x
     a <- css "span.comhead" >>> css "a:first-child" >>> getChildren >>> getText -< x
-    ts <- listA (css "span.comhead" >>> deep (getChildren >>> getText)) >>> arr concat -< x
+    ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat -< x
     returnA -< Comment n t a ts
 
 {-
