@@ -93,9 +93,12 @@ main = do
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
   postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
+  link <- runX $ doc >>> css "body table:first-child td.title a" >>> getAttrValue "href"
   subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
   -- print postTitle 
   putStrLn $ intercalate " "  postTitle
+  putStr "\n"
+  putStrLn $ intercalate " " link
   putStr "\n"
   putStrLn $ intercalate ""  subtext
   putStr "\n"
