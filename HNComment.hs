@@ -15,15 +15,16 @@ data Comment = Comment {
   , text :: String
   } deriving (Show)
 
-items = (isElem >>> hasName "table") `containing` indentImg
+items = css "table table table"
 
-indentImg = deep (getChildren >>> hasName "img" >>> hasAttrValue "src" (== "s.gif"))
+indentImg = deep ( hasName "img" >>> hasAttrValue "src" (== "s.gif"))
 
 item = proc x -> do
-    n <- indentImg >>> getAttrValue "width" >>^ read -< x
-    t <- getChildren //> hasAttrValue "class" (== "default") >>> 
-            deep ((getChildren >>> hasAttrValue "class" (== "comment"))) //> listA (deep getText) >>^ concat   -< x
-    returnA -< Comment n (show t)
+    n <- indentImg >>> getAttrValue "width" >>^ read . Prelude.takeWhile isDigit -< x
+    -- t <- constA "hello" -< x
+    t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat -< x
+            -- listA (deep (getChildren >>> hasAttrValue "class" (== "comment") >>> deep getText)) >>> arr concat   -< x
+    returnA -< Comment n t
 
 {-
                   <tr>
@@ -42,11 +43,10 @@ item = proc x -> do
 
 -}
 
-
-
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
-  items <- runX $ doc //> items  >>> item
-  mapM_ print items
+  xs <- runX $ doc >>> items  >>> item
+  -- xs <- runX $ doc >>> items 
+  mapM_ print xs
 
