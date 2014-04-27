@@ -13,7 +13,7 @@ import Text.HandsomeSoup
 
 data Comment = Comment {
     nesting :: Int
-  , text :: T.Text
+  , text :: [T.Text]
   , author :: String
   , timestamp :: String
   } deriving (Show)
@@ -35,7 +35,7 @@ ptimestamp = do
 
 item = proc x -> do
     n <- indentImg >>> getAttrValue "width" >>^ read . Prelude.takeWhile isDigit -< x
-    t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat >>^ T.pack -< x
+    t <- listA (css "td.default span.comment" >>> deep getText) >>^ map T.pack -< x
     a <- css "span.comhead" >>> css "a:first-child" >>> getChildren >>> getText -< x
     -- ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat -< x
     ts <- listA (css "span.comhead" >>> getChildren >>> getText) >>> arr concat >>^ parseTimestamp -< x
