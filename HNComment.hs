@@ -2,7 +2,8 @@
 module Main where
 import Text.XML.HXT.Core
 import Data.Char
-import Data.List (isPrefixOf, intercalate)
+import Data.List (isPrefixOf, intercalate, isInfixOf, sortBy)
+import Data.Ord (comparing)
 import qualified Data.List.Split as L
 import qualified Data.Text as T
 import Data.Attoparsec.Text
@@ -11,6 +12,11 @@ import Control.Applicative
 import Text.Printf
 import Text.HandsomeSoup
 
+data Top = Top {
+    title :: String
+  , body :: [String]
+} deriving (Show)
+
 data Comment = Comment {
     nesting :: Int
   , text :: [String]
@@ -18,7 +24,12 @@ data Comment = Comment {
   , timestamp :: String
   } deriving (Show)
 
-items = css "table table table"
+{-
+top = proc x -> do
+    t <- css "head title" >>> getText -< x
+    returnA -< Top title []
+-}
+comments = css "table table table"
 
 indentImg = deep ( hasName "img" >>> hasAttrValue "src" (== "s.gif"))
 
@@ -32,7 +43,6 @@ ptimestamp = do
     x <- Atto.takeWhile (`notElem` ['|'])
     takeText
     return . T.unpack . T.strip $ x
-
 
 itemPara = proc x -> do
     text <- listA (deep getText) >>> arr concat -< x
@@ -72,7 +82,19 @@ item = proc x -> do
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
-  xs <- runX $ doc >>> items  >>> item
-  -- xs <- runX $ doc >>> items 
+  xs <- runX $ doc >>> comments  >>> item
+  -- xs <- runX $ doc >>> comments 
   mapM_ print xs
+  title <- runX $ doc >>> css "head title" >>> getChildren >>> getText
+  print title
+  postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
+  subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
+  print postTitle
+  print subtext
+  subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
+  -- gets title then optionally paragraphs of post as array of paragraphs:
+  -- e.g. ["Ask HN: What is the most difficult tech/dev challenge you ever solved?","I feel I just make some CRUDs. It's fine, since they useful for my customers. But they are not technical challenges. So please tell me yours."]
+
+  postBody <- runX $ doc >>> css "body table:first-child table:first-child " >>> deep getText >>. (filter ((> 25) . length))
+  print postBody
 
