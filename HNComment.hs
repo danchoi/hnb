@@ -94,16 +94,18 @@ main = do
   let doc = readString [withParseHTML yes, withWarnings no] html
   postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
   subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
-  print postTitle 
+  -- print postTitle 
   putStrLn $ intercalate " "  postTitle
+  putStr "\n"
   putStrLn $ intercalate ""  subtext
+  putStr "\n"
 
   -- gets title then optionally paragraphs of post as array of paragraphs:
   -- e.g. ["Ask HN: What is the most difficult tech/dev challenge you ever solved?","I feel I just make some CRUDs. It's fine, since they useful for my customers. But they are not technical challenges. So please tell me yours."]
 
   postBody <- runX $ doc >>> css "body table:first-child table:first-child " >>> deep getText >>. (filter ((> 25) . length))
   putStrLn $ intercalate "\n\n"  postBody
-  putStrLn ""
+  putStrLn "\n---\n"
   xs <- runX $ doc >>> comments  >>> item
   mapM_ printComment xs
 
