@@ -92,20 +92,18 @@ printComment Comment{..} =
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
-  xs <- runX $ doc >>> comments  >>> item
-  -- xs <- runX $ doc >>> comments 
-  -- mapM_ print xs
-  mapM_ printComment xs
-  title <- runX $ doc >>> css "head title" >>> getChildren >>> getText
-  print title
   postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
   subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
-  print postTitle
-  print subtext
-  subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
+  print postTitle 
+  putStrLn $ intercalate " "  postTitle
+  putStrLn $ intercalate ""  subtext
+
   -- gets title then optionally paragraphs of post as array of paragraphs:
   -- e.g. ["Ask HN: What is the most difficult tech/dev challenge you ever solved?","I feel I just make some CRUDs. It's fine, since they useful for my customers. But they are not technical challenges. So please tell me yours."]
 
   postBody <- runX $ doc >>> css "body table:first-child table:first-child " >>> deep getText >>. (filter ((> 25) . length))
-  print postBody
+  putStrLn $ intercalate "\n\n"  postBody
+  putStrLn ""
+  xs <- runX $ doc >>> comments  >>> item
+  mapM_ printComment xs
 

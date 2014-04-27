@@ -124,3 +124,6 @@ tidy must be used for parsing the comments page
 $ cabal install && .cabal-sandbox/bin/hncomment < <(cat comments3.html | tidy -wrap 0 ) | grep down
 
 $ .cabal-sandbox/bin/hncomment < <(cat comments3.html | tidy -wrap 0 2>/dev/null ) | fmt 120 | less
+
+Must use the -utf8 tidy flag:
+$ cabal install && .cabal-sandbox/bin/hncomment < <(cat ask.html | tidy -utf8 -wrap 0 2>/dev/null ) | fmt 80 | less -R
