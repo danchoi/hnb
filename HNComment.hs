@@ -14,18 +14,27 @@ data Comment = Comment {
     nesting :: Int
   , text :: String
   , author :: String
+  , timestamp :: String
   } deriving (Show)
 
 items = css "table table table"
 
 indentImg = deep ( hasName "img" >>> hasAttrValue "src" (== "s.gif"))
 
+{-
+parseTimestamp s = case parseOnly (subText <|> other) (T.pack s) of
+  Left err -> error $ "Failed to parse input " ++ err
+  Right x -> x
+  -}
+
+
 item = proc x -> do
     n <- indentImg >>> getAttrValue "width" >>^ read . Prelude.takeWhile isDigit -< x
     t <- listA (css "td.default span.comment" >>> deep getText) >>> arr concat -< x
             -- listA (deep (getChildren >>> hasAttrValue "class" (== "comment") >>> deep getText)) >>> arr concat   -< x
     a <- css "span.comhead" >>> css "a:first-child" >>> getChildren >>> getText -< x
-    returnA -< Comment n t a
+    ts <- listA (css "span.comhead" >>> deep (getChildren >>> getText)) >>> arr concat -< x
+    returnA -< Comment n t a ts
 
 {-
         <tr>
