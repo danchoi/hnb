@@ -13,7 +13,7 @@ import Text.HandsomeSoup
 
 data Comment = Comment {
     nesting :: Int
-  , text :: String
+  , text :: [String]
   , author :: String
   , timestamp :: String
   } deriving (Show)
@@ -45,7 +45,7 @@ item = proc x -> do
 
     -- t <- listA (css "td.default span.comment" >>> itemPara)  >>^ map (T.pack . show) -< x
 
-    t <- css "td.default span.comment" >>> listA (listA itemPara)  >>> arr concat >. show -< x
+    t <- (css "td.default span.comment" >>> (listA itemPara))  >. concat -< x
 
     a <- css "span.comhead" >>> css "a:first-child" >>> getChildren >>> getText -< x
 
