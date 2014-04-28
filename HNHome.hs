@@ -68,11 +68,14 @@ parseDomain = (tdTitleNode >>> getChildren >>> isElem >>> hasName "span")
       >>. Prelude.take 1 >>> getChildren >>> getText >>^ T.unpack . removeParens . T.strip . T.pack
    where removeParens = T.tail . T.init
 
+fixLink s | "http" `isPrefixOf` s = s
+          | otherwise           = "https://news.ycombinator.com/" ++ s
+ 
 parsedItem1 = proc x -> do
     r <- (tdRank >>> parseRank) >>. Prelude.take 1 -< x
     t <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getChildren >>> getText -< x
     d <- parseDomain `orElse` constA "-" -< x
-    h <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getAttrValue "href" -< x
+    h <- (tdTitleNode >>> getChildren >>> hasName "a") >>. Prelude.take 1 >>> getAttrValue "href" >>^ fixLink -< x
     returnA -< Title r t d h
 
 parsedItem2 = proc x -> do
