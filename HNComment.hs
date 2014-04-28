@@ -2,7 +2,7 @@
 module Main where
 import Text.XML.HXT.Core
 import Data.Char
-import Data.List (isPrefixOf, intercalate, isInfixOf, sortBy)
+import Data.List (isPrefixOf, intercalate, isInfixOf, sortBy, isPrefixOf)
 import Data.Ord (comparing)
 import qualified Data.List.Split as L
 import qualified Data.Text as T
@@ -89,11 +89,15 @@ printComment Comment{..} =
       putStrLn $ pad nesting $ author ++ " " ++ timestamp
       putStrLn "\n"
 
+fixLink s | "http" `isPrefixOf` s = s
+          | otherwise           = "https://news.ycombinator.com/" ++ s
+  
+
 main = do 
   html <- getContents 
   let doc = readString [withParseHTML yes, withWarnings no] html
   postTitle <- runX $ doc >>> css "body table:first-child td.title" >>> deep getText
-  link <- runX $ doc >>> css "body table:first-child td.title a" >>> getAttrValue "href"
+  link <- runX $ doc >>> css "body table:first-child td.title a" >>> getAttrValue "href" >>^ fixLink
   subtext <- runX $ doc >>> css "body table:first-child td.subtext" >>> deep getText
   putStrLn $ intercalate " " link
   putStr "\n"
